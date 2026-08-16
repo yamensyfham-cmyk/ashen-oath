@@ -20,5 +20,5 @@ const BTN_PAUSE_R: float = 26.0
 const RETRY_RECT: Rect2 = Rect2(380.0, 430.0, 220.0, 72.0)
 const HOME_RECT: Rect2 = Rect2(680.0, 430.0, 220.0, 72.0)
 
-func dist(a: Vector2, b: Vector2) -> float:
+static func dist(a: Vector2, b: Vector2) -> float:
 	return a.distance_to(b)
