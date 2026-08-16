@@ -1,5 +1,4 @@
 extends Node
-class_name InputManager
 
 var move: Vector2 = Vector2.ZERO
 var guard_held: bool = false

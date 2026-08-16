@@ -42,10 +42,10 @@ func _ready():
 	]
 
 func husk_spec() -> Dictionary:
-	return {"type": "husk", "hp": 55.0, "posture": 55.0, "def": 20.0, "combo": 1, "speed": 1.7, "range": 120.0, "windup": 42, "active": 10, "recovery": 40, "damage": 14.0, "posture": 55.0, "reach": 120.0, "cooldown": 70}
+	return {"type": "husk", "hp": 55.0, "posture": 55.0, "posture_dmg": 18.0, "def": 20.0, "combo": 1, "speed": 1.7, "range": 120.0, "windup": 42, "active": 10, "recovery": 40, "damage": 14.0, "reach": 120.0, "cooldown": 70}
 
 func raker_spec() -> Dictionary:
-	return {"type": "raker", "hp": 42.0, "posture": 42.0, "def": 15.0, "combo": 3, "speed": 3.0, "range": 120.0, "windup": 22, "active": 8, "recovery": 16, "damage": 8.0, "posture": 42.0, "reach": 120.0, "cooldown": 46}
+	return {"type": "raker", "hp": 42.0, "posture": 42.0, "posture_dmg": 14.0, "def": 15.0, "combo": 3, "speed": 3.0, "range": 120.0, "windup": 22, "active": 8, "recovery": 16, "damage": 8.0, "reach": 120.0, "cooldown": 46}
 
 func make_enemy(spec: Dictionary, x: float):
 	var e = Enemy.new(spec, x, next_id)
@@ -126,7 +126,7 @@ func collisions():
 			var ehb = e.active_hitbox()
 			if ehb.size.x > 0.0 and rects_overlap(ehb, player.hurtbox()):
 				var dmg = e.swing_damage() * diff["edmg"]
-				var res = player.take_hit(self, dmg, e.spec["posture"] * 0.35, e.x)
+				var res = player.take_hit(self, dmg, e.spec["posture_dmg"] * 0.35, e.x)
 				if res != "iframe":
 					e.hit_player = true
 	if boss != null and boss.alive and boss.state == "active" and not boss.hit_player:
@@ -313,8 +313,8 @@ func _draw():
 	shake_mag *= 0.85
 	if shake_mag < 0.2:
 		shake_mag = 0.0
-	shake_x = rand_range(-shake_mag, shake_mag)
-	shake_y = rand_range(-shake_mag * 0.6, shake_mag * 0.6)
+	shake_x = randf_range(-shake_mag, shake_mag)
+	shake_y = randf_range(-shake_mag * 0.6, shake_mag * 0.6)
 
 func draw_background():
 	var top = Color(0.07, 0.07, 0.13)

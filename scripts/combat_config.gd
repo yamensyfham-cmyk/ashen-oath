@@ -1,5 +1,4 @@
 extends Node
-class_name CombatConfig
 
 const VW = 1280.0
 const VH = 720.0
