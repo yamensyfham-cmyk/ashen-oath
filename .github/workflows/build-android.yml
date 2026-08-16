@@ -69,9 +69,10 @@ jobs:
           echo "--- editor settings ---"
           cat ~/.config/godot/editor_settings-4.3.tres
 
-      - name: Install Android build template
+      - name: Install Android build template (extract into project)
         run: |
-          ./godot --headless --install-android-build-template
+          mkdir -p android/build
+          unzip -o ~/.local/share/godot/export_templates/4.3.stable/android_source.zip -d android/build
 
       - name: Export Android APK
         run: |
