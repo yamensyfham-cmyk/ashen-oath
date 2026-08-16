@@ -1,0 +1,26 @@
+config_version=5
+
+[application]
+
+config/name="Ashen Oath"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+CombatConfig="*res://scripts/combat_config.gd"
+InputManager="*res://scripts/input_manager.gd"
+SaveManager="*res://scripts/save_manager.gd"
+
+[display]
+
+window/size/viewport_width_height=Vector2(1280, 720)
+window/stretch/mode=1
+window/stretch/aspect=4
+window/handheld/orientation=0
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.055, 0.055, 0.075, 1)
