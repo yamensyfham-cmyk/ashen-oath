@@ -56,15 +56,18 @@ jobs:
           fi
           ls -la ~/.local/share/godot/export_templates/4.3.stable | head
 
-      - name: Configure Godot editor settings (Android SDK path)
+      - name: Configure Godot editor settings (Android + Java SDK paths)
         run: |
           mkdir -p ~/.config/godot
-          cat > ~/.config/godot/editor_settings-4.3.tres <<'EOF'
+          cat > ~/.config/godot/editor_settings-4.3.tres <<EOF
           [gd_resource type="EditorSettings" format=3]
 
           [resource]
-          export/android/android_sdk_path = "/usr/local/lib/android/sdk"
+          export/android/android_sdk_path = "$ANDROID_SDK_ROOT"
+          export/android/java_sdk_path = "$JAVA_HOME"
           EOF
+          echo "--- editor settings ---"
+          cat ~/.config/godot/editor_settings-4.3.tres
 
       - name: Export Android APK
         run: |
