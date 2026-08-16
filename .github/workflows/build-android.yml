@@ -68,8 +68,8 @@ jobs:
 
       - name: Export Android APK
         run: |
-		mkdir -p build
-		./godot --headless --export-release "Android" build/ashen-oath.apk
+          mkdir -p build
+          ./godot --headless --export-release "Android" build/ashen-oath.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
