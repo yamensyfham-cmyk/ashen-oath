@@ -46,13 +46,13 @@ jobs:
       - name: Download export templates
         run: |
           curl -fsSL -o templates.tpz https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
-          mkdir -p ~/.local/share/godot/export_templates/4.3.stable
+          mkdir -p ~/.local/share/godot/export_templates/4.3.stable.official
           mkdir -p tpl_extract
           unzip -o templates.tpz -d tpl_extract
           if [ -d tpl_extract/templates ]; then
-            cp -r tpl_extract/templates/* ~/.local/share/godot/export_templates/4.3.stable/
+            cp -r tpl_extract/templates/* ~/.local/share/godot/export_templates/4.3.stable.official/
           else
-            cp -r tpl_extract/* ~/.local/share/godot/export_templates/4.3.stable/
+            cp -r tpl_extract/* ~/.local/share/godot/export_templates/4.3.stable.official/
           fi
           ls -la ~/.local/share/godot/export_templates/4.3.stable | head
 
@@ -72,7 +72,7 @@ jobs:
       - name: Install Android build template (extract into project)
         run: |
           mkdir -p android/build
-          unzip -o ~/.local/share/godot/export_templates/4.3.stable/android_source.zip -d android/build
+          unzip -o ~/.local/share/godot/export_templates/4.3.stable.official/android_source.zip -d android/build
 
       - name: Export Android APK
         run: |
